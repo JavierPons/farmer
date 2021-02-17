@@ -6,7 +6,7 @@ const Search = () =>{
     const [show, setShow] = useState(0);
     const listings = useSelector((state)=> state.listings)
 
-    console.log(show)
+    
    
     return(
         <Fragment>
