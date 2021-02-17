@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { addListing } from '../redux/listingsReducer'
+import { addList, addListing } from '../redux/listingsReducer'
 
 import InputGroupWithExtras from "react-bootstrap/esm/InputGroup";
 
@@ -15,7 +15,9 @@ const AddData = () =>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addListing(name,tel,gender));
+        // starting to work to save input to DB via API 
+        // dispatch(addList(name,tel,gender));
+        dispatch(addListing(name,tel,gender))
     }
     return(
         <form onSubmit={handleSubmit}>
