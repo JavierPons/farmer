@@ -4,7 +4,9 @@ import { addList, addListing } from '../redux/listingsReducer'
 
 import InputGroupWithExtras from "react-bootstrap/esm/InputGroup";
 
-
+// material UI
+import { Input } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const AddData = () =>{
     const [name, setName] = useState();
@@ -16,28 +18,35 @@ const AddData = () =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         // starting to work to save input to DB via API 
-        // dispatch(addList(name,tel,gender));
+        //  dispatch(addList(name,tel,gender));
         dispatch(addListing(name,tel,gender))
     }
     return(
-        <form onSubmit={handleSubmit}>
-            <input
+        <div className="main">
+        <form  onSubmit={handleSubmit}>
+            <Input
                 type="text"
                 placeholder="Name"
                 onChange={({target})=> setName(target.value)}
             />
-            <input
+            <Input
                 type="text"
                 placeholder="Telephone"
                 onChange={({target})=> setTel(target.value)}
             />
-            <input
+            <Input
                 type="text"
                 placeholder="Gender"
                 onChange={({target})=> setGender(target.value)}
             />
-            <button type="submit">Submit</button>
+            <Button   
+                variant="contained"
+                color="primary"
+                style={{position:'relative', left:'20px'}}
+                type="submit">Submit</Button>
+            
         </form>
+        </div>
     )
    
 }
