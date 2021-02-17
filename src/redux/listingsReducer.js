@@ -36,10 +36,10 @@ export const initListings = () => {
 
 export const addList = (name, tel, gender) => { 
     return async dispatch => {
-    // axios.get("http://localhost:3004/api/").then(e=>{
+    // axios.get("http://localhost:3004/").then(e=>{
     //     console.log(e)
-    // })
-    axios.post("http://localhost:3004/api/farm/", {name: name, tel: tel, gender: gender}).then(res=>{
+    //  })
+    axios.post("http://localhost:3004/farm/", {name: name, tel: tel, gender: gender}).then(res=>{
         dispatch({
             type: 'ADD_LIST', 
             data: res.data
