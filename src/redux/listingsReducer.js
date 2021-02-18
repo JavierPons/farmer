@@ -5,6 +5,7 @@ import axios from 'axios';
 const listingsReducer = (state = [], action) => {
 
     switch(action.type){
+
         case 'INIT_LISTINGS':
             return action.data;
 
@@ -12,8 +13,6 @@ const listingsReducer = (state = [], action) => {
             return [...state, action.data] ;  
 
         case 'ADD_LIST':
-            console.log("action.data")
-            console.log(action.data)
             return [...state, action.data];
 
             default:
