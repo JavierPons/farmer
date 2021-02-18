@@ -15,6 +15,7 @@ const AddData = () =>{
     
     const dispatch = useDispatch();
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // starting to work to save input to DB via API 

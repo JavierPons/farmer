@@ -16,12 +16,12 @@ const Search = () =>{
     // const dispatch = useDispatch();
      
     
-    useEffect(()=>{
-        axios.get("http://localhost:3004/api/list/").then(resp=>{
+    // useEffect(()=>{
+    const getList = ()  =>{axios.get("http://localhost:3004/api/list/").then(resp=>{
             console.log(resp.data)
             setList(resp.data) ;
-        })
-    },[])
+        })}   
+    // },[])
     
     return(
       
@@ -29,27 +29,27 @@ const Search = () =>{
            <Input
            type="text"
            placeholder="Search by name or tel."
-           onChange={({target}) => 
-               setSearch(target.value)}
+           onChange={({target}) => (getList(),setSearch(target.value))
+               }
                
            />
            {list.filter(list => list.name === search || list.tel === search).map((l, inx)=>(
                
                <div key={inx}>
-                  {show === true ? <p>{l.name}</p>: <p>{l.name} {l.tel} {l.gender}</p> }  
+                  {show === false ? <p>{l.name}</p>: <p>{l.name} {l.tel} {l.gender}</p> }  
                    {show == true ?<Button 
                      variant="contained"
                      color="secundary"
                      style={{ backgroundColor: "#ffbf00"}}
                     onClick={()=>{
                         setShow(false)
-                    }}>Show more</Button> :<Button 
+                    }}>Show less</Button> :<Button 
                     variant="contained"
                     color="secundary"
                     style={{ backgroundColor: "#ffbf00"}}
                    onClick={()=>{
                        setShow(true)
-                   }}>Show less</Button>} 
+                   }}>Show more</Button>} 
                </div>
               
            ) 
