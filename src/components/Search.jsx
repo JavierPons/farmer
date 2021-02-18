@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 
 const Search = () =>{
     const [search,setSearch] = useState();
-    const [show, setShow] = useState(0);
+    const [show, setShow] = useState(false);
     const [list, setList] = useState([])   
     // used only to store in Redux data
     // const listings = useSelector((state)=> state.listings)
@@ -36,14 +36,20 @@ const Search = () =>{
            {list.filter(list => list.name === search || list.tel === search).map((l, inx)=>(
                
                <div key={inx}>
-                  {show === 0 ? <p>{l.name}</p>: <p>{l.name} {l.tel} {l.gender}</p> }  
-                    <Button 
+                  {show === true ? <p>{l.name}</p>: <p>{l.name} {l.tel} {l.gender}</p> }  
+                   {show == true ?<Button 
                      variant="contained"
                      color="secundary"
                      style={{ backgroundColor: "#ffbf00"}}
                     onClick={()=>{
-                        setShow(1)
-                    }}>Show more</Button>
+                        setShow(false)
+                    }}>Show more</Button> :<Button 
+                    variant="contained"
+                    color="secundary"
+                    style={{ backgroundColor: "#ffbf00"}}
+                   onClick={()=>{
+                       setShow(true)
+                   }}>Show less</Button>} 
                </div>
               
            ) 
