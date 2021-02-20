@@ -5,6 +5,7 @@ import AddData from './components/AddData'
 import Search from './components/Search';
 import { initListings, addListing , addListStore} from './redux/listingsReducer';
 
+
 function App() {
   const dispatch = useDispatch();
   const listings = useSelector((state)=> state.listings)

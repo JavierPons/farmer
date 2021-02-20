@@ -24,7 +24,7 @@ const listingsReducer = (state = [], action) => {
     }
 };
 
-//getting list
+//addding db list to Redux store
 export const addListStore = ()=>{
     return async dispatch => {
     axios.get('http://localhost:3004/api/list/',{}).then(resp =>{
@@ -33,9 +33,9 @@ export const addListStore = ()=>{
             data: resp.data
         })
     })
+    
 }
 }
-
 export const initListings = () => {
     return async dispatch => {
         const listings =  await listingsService.getAll();

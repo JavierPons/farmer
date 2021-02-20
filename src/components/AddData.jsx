@@ -20,7 +20,7 @@ const AddData = () =>{
         e.preventDefault();
         // starting to work to save input to DB via API 
         //  dispatch(addList(name,tel,gender));
-        dispatch(addListStore(name,tel,gender))
+        dispatch(addList(name,tel,gender))
     }
     return(
         <div className="main">

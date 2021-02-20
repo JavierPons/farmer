@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getList}  from '../redux/listingsReducer'
+import { getList, addListing}  from '../redux/listingsReducer'
 import axios from "axios";
 
 // material UI
@@ -15,7 +15,9 @@ const Search = () =>{
     // const listings = useSelector((state)=> state.listings)
     // const dispatch = useDispatch();
      
-    const getList = ()  =>{axios.get("http://localhost:3004/api/list/").then(resp=>{
+    const getList = ()  =>{
+        axios.get("http://localhost:3004/api/list/")
+        .then(resp=>{
             console.log(resp.data)
             setList(resp.data) ;
         })}   
