@@ -23,8 +23,8 @@ const addListing = (name, tel, gender) => {
     return listing
 }
 
-const getAll = () => {
-    return myData;
-}
+// const getAll = () => {
+//     return myData;
+// }
 
-export default { getAll , addListing};
+export default { /*getAll ,*/ addListing};

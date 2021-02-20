@@ -10,7 +10,10 @@ const listingsReducer = (state = [], action) => {
             return action.data;
 
         case 'ADD_LISTING':
-            return [...state, action.data] ;  
+            return [...state, action.data] ; 
+            
+        case 'ADD_LIST_STORE':
+            return [...state, action.data]
 
         case 'ADD_LIST':
             return [...state, action.data];
@@ -21,6 +24,17 @@ const listingsReducer = (state = [], action) => {
     }
 };
 
+//getting list
+export const addListStore = ()=>{
+    return async dispatch => {
+    axios.get('http://localhost:3004/api/list/',{}).then(resp =>{
+        dispatch({
+            type: 'ADD_LIST_STORE',
+            data: resp.data
+        })
+    })
+}
+}
 
 export const initListings = () => {
     return async dispatch => {

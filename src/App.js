@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './style.css'
 import AddData from './components/AddData'
 import Search from './components/Search';
-import { initListings, addListing } from './redux/listingsReducer';
+import { initListings, addListing , addListStore} from './redux/listingsReducer';
 
 function App() {
   const dispatch = useDispatch();
   const listings = useSelector((state)=> state.listings)
 
   useEffect(() => {
-   dispatch(initListings());
+   dispatch(addListStore());
   }, [dispatch])
 
 

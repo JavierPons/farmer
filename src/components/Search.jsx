@@ -15,13 +15,14 @@ const Search = () =>{
     // const listings = useSelector((state)=> state.listings)
     // const dispatch = useDispatch();
      
-    
-    // useEffect(()=>{
     const getList = ()  =>{axios.get("http://localhost:3004/api/list/").then(resp=>{
             console.log(resp.data)
             setList(resp.data) ;
         })}   
-    // },[])
+   
+    const deleteItem = () =>{
+        
+    }
     
     return(
       
@@ -36,7 +37,7 @@ const Search = () =>{
            {list.filter(list => list.name === search || list.tel === search).map((l, inx)=>(
                
                <div key={inx}>
-                  {show === false ? <p>{l.name}</p>: <p>{l.name} {l.tel} {l.gender}</p> }  
+                  {show === false ? <p>{l.name}</p>: <div><p>{l.name} {l.tel} {l.gender}</p> <Button onClick={deleteItem()}/></div>}  
                    {show == true ?<Button 
                      variant="contained"
                      color="secundary"
