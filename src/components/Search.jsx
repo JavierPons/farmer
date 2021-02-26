@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getList, addListing}  from '../redux/listingsReducer'
+import { getList, addListing, deleteList}  from '../redux/listingsReducer'
 import axios from "axios";
 
 // material UI
@@ -22,8 +22,18 @@ const Search = () =>{
             setList(resp.data) ;
         })}   
    
-    const deleteItem = () =>{
-        
+    const deleteItem = (listId) =>{
+        console.log(listId)
+        axios.delete(`http://localhost:3004/api/deleteItem/`, {params: {id:listId}}).then(resp => {
+            console.log(resp)
+            // dispatch({
+            //     type: 'DELETE_LIST',
+            //     data: resp.data
+            // })
+        }).catch(err=> {
+            console.log(err)
+        })
+        // deleteList(listId)
     }
     
     return(
@@ -39,7 +49,8 @@ const Search = () =>{
            {list.filter(list => list.name === search || list.tel === search).map((l, inx)=>(
                
                <div key={inx}>
-                  {show === false ? <p>{l.name}</p>: <div><p>{l.name} {l.tel} {l.gender}</p> <Button onClick={deleteItem()}/></div>}  
+                  {show === false ? <div > <p style={{ display:'inline-block', position:'relative', right:'5px'}}>{l.name}</p> <Button variant="contained"
+                     color="secundary"  style={{height: '15px'}} onClick={()=>{deleteItem(l.id)}}>delete</Button></div>: <div><p>{l.name} {l.tel} {l.gender}</p></div>}  
                    {show == true ?<Button 
                      variant="contained"
                      color="secundary"

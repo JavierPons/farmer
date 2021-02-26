@@ -17,6 +17,9 @@ const listingsReducer = (state = [], action) => {
 
         case 'ADD_LIST':
             return [...state, action.data];
+        
+        case 'DELETE_LIST':
+            return state.filter(({id})=> id !== action.id)
 
             default:
                 return state;
@@ -70,5 +73,19 @@ export const addListing = (name, tel, gender) => {
         });
     };
 };
+
+export const deleteList = (id) => {
+    console.log('clicked ',id)
+    return async dispatch => {
+       return axios.delete(`http://localhost:3004/api/deleteItem/`, {id: id}).then(resp => {
+            dispatch({
+                type: 'DELETE_LIST',
+                data: resp.data
+            })
+        }).catch(err=> {
+            console.log(err)
+        })
+    }
+}
 
 export default listingsReducer;
