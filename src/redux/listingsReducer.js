@@ -74,13 +74,13 @@ export const addListing = (name, tel, gender) => {
     };
 };
 
-export const deleteList = (id) => {
-    console.log('clicked ',id)
-    return async dispatch => {
-       return axios.delete(`http://localhost:3004/api/deleteItem/`, {id: id}).then(resp => {
+export const deleteList = (listId) => {
+    console.log('clicked ',listId)
+    return  dispatch => {
+       return axios.delete(`http://localhost:3004/api/deleteItem/`, {params: {id:listId}}).then(resp => {
             dispatch({
                 type: 'DELETE_LIST',
-                data: resp.data
+                data: listId
             })
         }).catch(err=> {
             console.log(err)

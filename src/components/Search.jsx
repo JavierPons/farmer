@@ -26,14 +26,11 @@ const Search = () =>{
         console.log(listId)
         axios.delete(`http://localhost:3004/api/deleteItem/`, {params: {id:listId}}).then(resp => {
             console.log(resp)
-            // dispatch({
-            //     type: 'DELETE_LIST',
-            //     data: resp.data
-            // })
+            deleteList(listId)
         }).catch(err=> {
             console.log(err)
         })
-        // deleteList(listId)
+       
     }
     
     return(
